@@ -1,0 +1,25 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+.success-green{
+    color: rgb(46, 129, 46);
+}
+
+.public-blue{
+    color: rgb(48, 144, 182);
+}
+
+.warning-red{
+    color: rgb(202, 92, 92);
+}
+
+.alert-yellow{
+    color: rgb(211, 211, 110);
+}
