@@ -20,6 +20,9 @@ Route::resource('project', 'ProjectController');
 Route::delete('tasks/{task}', 'TaskController@delete');
 Route::post('tasks/{task}/done', 'TaskController@done');
 Route::post('tasks/{task}/notDone', 'TaskController@notDone');
+Route::post('projects/{task}/done', 'ProjectController@done');
+Route::post('projects/{task}/notDone', 'ProjectController@notDone');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{user}/doneTasks', 'HomeController@doneTasks');
+Route::get('/{user}/projects', 'HomeController@projects');

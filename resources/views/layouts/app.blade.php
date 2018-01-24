@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top background-gray">
             <div class="container">
                 <div class="navbar-header">
 
@@ -28,17 +28,18 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand " href="{{ url('/') }}">
+                        <p class="color-ubuntu">{{ config('app.name', 'Laravel') }}</p>
                     </a>
-                    
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
-                        
+                        <li><a href=""><e class="color-whitesmoke">Public Projects</e></a></li>
+                        <li><a href=""><e class="color-whitesmoke">Public Tasks</e></a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,26 +51,40 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <e class="color-ubuntu">{{ Auth::user()->name }}</e> <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="" href="{{ url('/') }}">
+                                            Your Tasks
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-toggle" href="{{ url('/') }}/{{Auth::user() -> id}}/doneTasks">
+                                            Your done Tasks <span class="success-green glyphicon glyphicon-ok"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="" href="{{ url('/') }}/{{Auth::user() -> id}}/projects">
+                                            Your Projects
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Logout <span class="warning-red glyphicon glyphicon-remove"></span>
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <a class="" href="{{ url('/') }}/{{Auth::user() -> id}}/doneTasks">Done <span class="success-green glyphicon glyphicon-ok"></span></a>
-                            </li>
+
+
                         @endguest
                     </ul>
                 </div>

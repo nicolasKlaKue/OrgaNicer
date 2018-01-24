@@ -8366,3 +8366,23 @@ button.close {
   color: #d3d36e;
 }
 
+.background-gray {
+  background-color: #252525;
+}
+
+.background-whitesmoke {
+  background-color: whitesmoke;
+}
+
+.color-whitesmoke {
+  color: whitesmoke;
+}
+
+.color-ubuntu {
+  color: #E95420;
+}
+
+.color-darkgray {
+  color: #252525;
+}
+

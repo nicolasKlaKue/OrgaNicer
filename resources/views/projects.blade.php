@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="font-weigt-bold text-center">Erledigte Aufgaben:</h1>
+    <h1 class="font-weigt-bold text-center">Projekte:</h1>
     <div class="row">
         <div class="col-md-12">
             @if (session('status'))

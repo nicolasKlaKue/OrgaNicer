@@ -40,13 +40,37 @@ class ProjectController extends Controller
         //
         $project = new Project;
 
+        if(request('done') == 'on'){
+            $done = true;
+            $project -> finished_at = Carbon::now();
+        }else{
+            $done = false;
+        }
+
+        if(request('archive') == 'on'){
+            $archive = true;
+        }else{
+            $archive = false;
+        }
+
+        if(request('public') == 'on'){
+            $public = true;
+        }else{
+            $public = false;
+        }
+
         $project -> title = request('title');
         $project -> description = request('description');
         $project -> due_at = request('date');
         $project -> creater_id = Auth::user()->id;
         $project -> finished_at = null;
-
+        $project -> done = $done;
+        $project -> public = $public;
+        $project -> archive = $archive;
+       
         $project -> save();
+
+        $project -> users() -> attach(Auth::user()->id);
         return back();
     }
 
@@ -93,5 +117,12 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function done(Task $task){
+        $task -> done = true;
+        $task -> finished_at = Carbon::now();
+        $task -> save();
+        return back();
     }
 }

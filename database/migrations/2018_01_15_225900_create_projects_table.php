@@ -17,6 +17,8 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->boolean('done');
+            $table->boolean('public');
+            $table->boolean('archive');
             $table->longtext('description')->nullable();
             $table->integer('creater_id')->unsigned();
             $table->dateTime('finished_at')->nullable();

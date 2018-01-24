@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use App\Project;
+use App\User;
 use Carbon\Carbon;
 use Auth;
 
@@ -92,5 +94,10 @@ class HomeController extends Controller
         });
 
         return view('done', compact(['tasks1','tasks2','tasks3','tasks4','tasks5']));
+    }
+
+    public function projects(){
+        $projects = Project::latest() -> where('creater_id', Auth::user()->id)->get();
+        return view('projects', compact('projects'));
     }
 }

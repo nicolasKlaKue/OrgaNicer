@@ -17,7 +17,9 @@
             </div>
             <div class="form-group">
                 <div class="checkbox">
-                    <label class="checkbox-inline" for=""><input name="done" type="checkbox">Done <span class="glyphicon glyphicon-ok"></span></label>
+                    <label class="checkbox-inline" for=""><input name="public" type="checkbox">Public <span class="glyphicon glyphicon-cloud public-blue"></span></label>
+                    <label class="checkbox-inline" for=""><input name="done" type="checkbox">Done <span class="glyphicon glyphicon-ok success-green"></span></label>
+                    <label class="checkbox-inline" for=""><input name="archive" type="checkbox">Archive <span class="glyphicon glyphicon-ok alert-yellow"></span></label>
                 </div>
             </div>
             <hr>
