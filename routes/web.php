@@ -15,10 +15,10 @@ Route::get('/','HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::resource('tasks', 'TaskController');
-Route::resource('project', 'ProjectController');
+Route::resource('tasks', 'TaskController')->middleware('auth');
+Route::resource('project', 'ProjectController')->middleware('auth');
 Route::delete('tasks/{task}', 'TaskController@delete');
-Route::post('tasks/{task}/done', 'TaskController@done');
+Route::post('tasks/{task}/done', 'TaskController@done')->middleware('auth');
 Route::post('tasks/{task}/notDone', 'TaskController@notDone');
 Route::post('projects/{task}/done', 'ProjectController@done');
 Route::post('projects/{task}/notDone', 'ProjectController@notDone');
