@@ -32,6 +32,7 @@ class HomeController extends Controller
         $tasks = Task::latest()->where('owner_id', Auth::user()->id)->where('done', "false")->orderBy('created_at', 'DESC')->get();
 
         
+        //Tasks heute
         $tasks1 = $tasks->filter(function($value){
             $now = Carbon::now();
             if($now -> diffInDays($value->due_at, false)<1){
@@ -39,30 +40,34 @@ class HomeController extends Controller
             }
             return false;
         });
+
+        //Tasks diese Woche
         $tasks2 = $tasks->filter(function($value){
             $now = Carbon::now();
-            if($now -> diffInWeeks($value->due_at)<1 && $now -> diffInDays($value->due_at)>=1){
+            if($now -> diffInWeeks($value->due_at, false)<1 && $now -> diffInDays($value->due_at, false)>=1){
                 return true;
             }
             return false;
         });
+
+        //Tasks diesen Monat
         $tasks3 = $tasks->filter(function($value){
             $now = Carbon::now();
-            if($now -> diffInMonths($value->due_at)<1 && $now -> diffInWeeks($value->due_at)>=1){
+            if($now -> diffInMonths($value->due_at, false)<1 && $now -> diffInWeeks($value->due_at, false)>=1){
                 return true;
             }
             return false;
         });
         $tasks4 = $tasks->filter(function($value){
             $now = Carbon::now();
-            if($now -> diffInMonths($value->due_at)<7 && $now -> diffInMonths($value->due_at)>=1){
+            if($now -> diffInMonths($value->due_at, false)<7 && $now -> diffInMonths($value->due_at, false)>=1){
                 return true;
             }
             return false;
         });
         $tasks5 = $tasks->filter(function($value){
             $now = Carbon::now();
-            if($now -> diffInMonths($value->due_at)>=7){
+            if($now -> diffInMonths($value->due_at, false)>=7){
                 return true;
             }
             return false;
